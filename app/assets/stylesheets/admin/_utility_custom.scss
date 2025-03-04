@@ -1,0 +1,45 @@
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.cursor-none {
+  cursor: none !important;
+}
+.text-right{
+  text-align: right;
+}
+.form-actions{
+  margin-top: 1em;
+}
+.form-check-input[type="checkbox"]{
+  padding: 0;
+}
+.actions{
+  text-align: right;
+}
+.form-group{
+  margin-bottom: 1em;
+}
+.sortable-ghost{
+  border: 1px solid #ccc;
+}
+.ui-sortable-helper {
+  background:green;
+}
+.handle{
+  cursor: grab;
+}
+.sortable-chosen, .sortable-chosen td{
+  background-color: #ccc;
+//  color: white;
+  box-shadow: 2px 2px 2px rgba(#333, 0.5);
+}
+.hide{display: none}
+.secondary{
+  color: #888;
+}
