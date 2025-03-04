@@ -1,0 +1,59 @@
+
+.snippet-missing{
+  display: none;
+}
+.snippet{
+  position: relative;
+}
+.site-admin{
+  .snippet-missing{
+    display: block;
+    background-color: pink;
+    padding: 8px;
+  }
+  .snippet .slug{
+    display: none;
+  }
+  &.site-debug{
+    .snippet{
+      .slug{
+        font-size: 12px;
+        position: absolute;
+        top: -6px;
+        left: -10px;
+        background-color: rgba(#ccc, 0.1);
+        display: none;
+        opacity: 0.5;
+      }
+      &:hover{
+        .slug{
+          display: block;        
+        }
+      }
+    }   
+    .admin-link-wrap{
+      position: relative;
+      .admin-link{      
+        font-size: 12px;
+        position: absolute;
+        top: -6px;
+        left: -10px;
+        background-color: rgba(#ccc, 0.1);
+        display: none;
+        opacity: 0.5;  
+        span{
+          display: none;
+        }    
+        &:before {
+          content: "\F4CB"; // Unicode value for the icon
+          font-family: "bootstrap-icons"; // Ensure the correct font family is used
+        }    
+      }
+      &:hover{
+        .admin-link{
+          display: block;
+        }
+      }
+    }     
+  }
+}
