@@ -1,0 +1,24 @@
+<nav class="sidebar col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+  <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-4 text-white min-vh-100">
+    <div class="">
+      <a href="/" target="_blank" class="d-flex align-items-center text-white text-decoration-none  mb-1"   >
+        <i class="bi-gem"></i>
+        <span class="d-none d-sm-inline mx-1 fw-700 ms-2 text-white"><%= ENV["APPLICATION_NAME"]%> CMS</span>
+      </a>     
+    </div>
+    <hr class="w-100" style="height:2px; color:grey;">
+    <ul class="ms-1 mt-1 nav nav-pills flex-column  mb-0 align-items-center align-items-sm-start" id="menu">
+      <li class="nav-item">
+        <a href="/admin/" class="nav-link align-middle px-0">
+          <i class="bi-house-fill"></i>
+          <span class="ms-2 fw-600 d-none d-sm-inline">Dash</span>
+        </a>
+      </li>     
+    </ul>
+    <%= render "admin/shared/sidebar/content" %>
+    <%= render "admin/shared/sidebar/app_specific" %>
+    <%= render "admin/shared/sidebar/core_items" %>    
+    <hr>
+    <%= render "admin/shared/sidebar/user" %>       
+  </div>
+</nav>

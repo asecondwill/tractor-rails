@@ -1,0 +1,11 @@
+<% if errors.any? %>
+  <div class="alert alert alert-danger">
+    <ul>
+      <% errors.each do |error| %>
+        <li>
+          <%= "#{error.attribute} #{error.message} "  %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

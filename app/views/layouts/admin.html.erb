@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%# <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script> 
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" /> %>
+    
+    <%= javascript_importmap_tags "admin" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class='admin container-fluid bg-offwhite'>
+    <div class="row flex-nowrap">
+      <%= render "admin/shared/sidebar" %>
+      <div class="main col pt-5">
+        <%= render "admin/shared/notices" %>
+        <%= yield %>
+      </div>
+    </div>
+    <%# render "admin/shared/mediapicker" %>
+  </body>
+</html>

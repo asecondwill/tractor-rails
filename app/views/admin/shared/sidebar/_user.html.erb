@@ -1,0 +1,12 @@
+<p class="ms-2 fw-600 d-none d-sm-inline mx-1"><%= current_user.full_name %></p>
+    <br>
+
+    
+    <a href="<%= admin_settings_path %>" class="nav-link align-middle px-0">
+      <i class="bi-wrench"></i>
+      <span class="ms-2 fw-600 d-none d-sm-inline">Settings</span>
+    </a>  
+    <hr>
+    <a href="/admin/settings" class="nav-link align-middle px-0">     
+       <%= button_to "Sign out", session_path, method: :delete, "data-turbo-action": "replace", class: "btn btn-outline-secondary w-100" %>
+    </a>

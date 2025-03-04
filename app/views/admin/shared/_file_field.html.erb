@@ -1,0 +1,36 @@
+<div class="file-field">
+  <label for=""><%= label %></label>
+  <% if hint.present? %>
+    <p class="hint small">
+      <%= hint.html_safe %>
+    </p>
+  <% end %>
+  <div class="file-field-elements">
+    <div class='file-field-preview' >
+      <% if f.object.send(field).attached? %>
+        <div class="file-field-image">
+          <% if ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].include? f.object.send(field).content_type  %>
+            <%= image_tag f.object.send(field).variant(resize_to_fill: [200, 200]) %>
+          <% else %>
+            <%== "#{f.object.send(field).content_type}<br>#{f.object.send(field).filename}" %>
+          <% end %>
+        </div>
+        <%== link_to "#{f.object.send(field).filename.to_s.truncate(15)}", f.object.send(field), {target: '_blank'} %><br>
+        <%#rails_storage_proxy_path f.object.send(field) %>
+        <% if ['image/jpeg', 'image/png', 'image/gif', 'image/webp'].include? f.object.send(field).content_type  %>
+          Width: <%= f.object.send(field).metadata['width'] %>px Height: <%= f.object.send(field).metadata['height'] %>px
+        <% end %>
+        Size: <%= number_to_human_size f.object.send(field).byte_size %>
+        <%= f.input "#{field}_destroy", as: :boolean, label: 'Remove File?' %>
+      <% else %>
+        <div class="file-field-image">
+          <i class="bi bi-camera2"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="file-field-input">
+      <%= f.input field.to_sym, label: false %>
+      <p class="hint small">Drag Images to the box above or use 'Browse' to select from your system.</p>
+    </div>
+  </div>
+</div>
