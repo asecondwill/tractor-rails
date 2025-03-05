@@ -1,0 +1,14 @@
+
+ <%= render "admin/shared/file_field",
+              f: f,
+              field: 'hero',
+              label: 'Hero',
+              hint: 'The main image of this media set. This should be an Image, not a pdf, mp3 or video.'
+            %>
+
+<%= f.input :image_columns, hint: 'choose a number between 2-8' %>
+<%= f.input :image_style, as: :select, collection: ['bordered', 'bordered-round', 'plain', 'plain-round'],  include_blank: false %>
+<%= f.input :direction, as: :select, collection: ['Image On Left', 'Image On Right'],  include_blank: false %>
+
+
+<%= f.input :body,  input_html: {class: 'easymde'} %>

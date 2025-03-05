@@ -1,0 +1,48 @@
+<div class="card mb-4">
+  <div class="card-body">
+    <h4>Sections</h4>
+    <p class="hint">
+      Build the content of the <%= description %> using sections. 
+    </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>ShowTitle</th>
+          <th>Template</th>
+          <th>Type</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="sections" data-controller="drag" data-drag-url="/admin/sections/:id/move" >
+        <% item.sections.order(:position).each do |section| %>
+          <tr data-id="<%= section.id %>">
+            <td class='handle'><i class="bi bi-grip-vertical"></i></td>
+            <td><%= section.title %></td>
+            <td><%= section.show_title %></td>
+            <td><%= section.template %></td>
+            <td><%= section.sectiontypeable_type %></td>
+            <td class='actions text-right'>
+              <%= link_to "Edit", edit_admin_section_path( section) %>
+              &nbsp;&nbsp;
+              <%= link_to '<i class="bi bi-trash"></i>'.html_safe, admin_section_path(section), method: :delete,  data: {
+                                  turbo_method: :delete,
+                                  turbo_confirm: "Are you sure?"
+                                }  %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <h5>Add a new Section</h5>
+    <div class="row ">
+      <div class="col">
+        <a href='<%= new_admin_section_path( sectionable_type: item.class.to_s, sectionable_id: item.id, sectiontypeable_type: :Blockcontent) %>' class='btn btn-primary'> <i class="bi bi-body-text"></i> Editor Section</a>
+      </div>         
+      <div class="col">
+        <a href='<%= new_admin_section_path( sectionable_type: item.class.to_s, sectionable_id: item.id, sectiontypeable_type: :Blockmediaset) %>' class='btn btn-primary'><i class="bi bi-body-text"></i> <i class="bi bi-card-image"></i> Media  </a>
+      </div> 
+    </div>
+  </div>
+</div>

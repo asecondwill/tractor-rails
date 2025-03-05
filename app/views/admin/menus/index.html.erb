@@ -1,0 +1,37 @@
+
+
+<div class="row">
+    <div class="col-8">      
+      <h1 class="header-title">Menus</h1>
+    </div>
+    <div class="col-4 text-right">
+      <a class="btn btn-primary" href="/admin/menus/new">  Add Menu</a>
+    </div>
+  </div>
+<div class="card">
+  <div class="card-body">
+    <div id="articles">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="actions"></th>
+          </tr>
+        </thead>
+
+      <% @menus.each do |menu| %>
+          <tr>
+            <td><%= link_to menu.name, admin_menu_path(menu) %></td>
+            <td class="actions">
+              <%= link_to "<i class='bi-pencil'></i>".html_safe, edit_admin_menu_path(menu) %>
+              <%= link_to "<i class='bi-trash'></i>".html_safe, admin_menu_path(menu), data: {
+                          turbo_method: :delete,
+                          turbo_confirm: "Are you sure?"
+                        } %>
+            </td>
+          </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

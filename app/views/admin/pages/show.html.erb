@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Pages", admin_pages_path %></li>
+    <li class="breadcrumb-item active mr-auto" aria-current="page"><%= @page.id %></li> 
+  </ol>
+</nav>
+<div class="card">
+  <h5 class="card-header">Page</h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <p class="fw-bold">Title</p>
+      <p class="fw-normal"><%= @page.title %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Slug</p>
+      <p class="fw-normal"><%= @page.slug %></p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold">Content</p>
+      <p class="fw-normal"><%= @page.content %></p>
+    </li>
+  </ul>
+</div>

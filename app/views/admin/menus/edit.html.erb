@@ -1,0 +1,14 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Menus", admin_menus_path %></li>
+    <li class="breadcrumb-item"><%=  @menu.name %></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
+
+<h1>Edit Menu</h1>
+<div class="card">
+  <div class="card-body">
+    <%= render 'form', menu: @menu %>
+  </div>
+</div>

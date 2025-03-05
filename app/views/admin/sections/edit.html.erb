@@ -1,0 +1,56 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Pages", admin_pages_path %></li>
+    <li class="breadcrumb-item"><%=  link_to  @section.sectionable.title, @section.sectionable.return_path %></li>
+    <li class="breadcrumb-item"><%=  @section.title %></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
+
+
+<%= simple_form_for([:admin,  @section]) do |f| %>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Edit Section</h4>
+    </div>
+    <div class="card-body">
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= f.input :sectionable_type, as: :hidden  %>
+      <%= f.input :sectionable_id, as: :hidden  %>      
+      <%= f.input :sectiontypeable_type, as: :hidden %>                   
+      <%= f.input :title %>
+      <%= f.input :show_title %>
+      <h4>Style</h4>
+      <%# , 'blue', 'blue bigger'  %>
+      <%= f.input :template, as: :select, collection: ['plain', 'plain bigger',  'grey', 'grey bigger'], include_blank: false %>
+    </div>
+  </div>
+  <div class="card mt-5">
+    <div class="card-header">
+      <h4>Content</h4>
+    </div>
+    <div class="card-body">
+        <%= f.simple_fields_for :sectiontypeable do |stf| %>
+        <%= render "/admin/sections/#{@section.sectiontypeable.class}/fields", f: stf %>
+      <% end %>
+    </div>
+  </div>
+
+  
+    
+    
+
+  <div class="card mt-4">
+    <div class="card-header">
+      <h4>Actions</h4>
+    </div>
+    <div class="card-body">
+      <div class="form-actions text-right">
+        <%= link_to "Back", @section.sectionable.return_path, class: 'btn btn-outline-secondary' %>
+        <%= f.button :submit, class: 'btn-primary' %>
+      </div>
+    </div>  
+  <% end %>
+  
+

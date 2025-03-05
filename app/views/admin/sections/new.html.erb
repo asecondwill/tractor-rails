@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <%= simple_form_for([:admin,  @section]) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <%= f.input :sectionable_type, as: :hidden  %>
+      <%= f.input :sectionable_id, as: :hidden  %>      
+      <%= f.input :sectiontypeable_type, as: :hidden %>                   
+      <%= f.input :title %>
+      <%= f.input :show_title %>
+      <%= f.input :template, as: :select, collection: ['plain', 'grey', 'blue'], include_blank: false %>
+      <%# f.input :style %>
+
+       <%= f.simple_fields_for :sectiontypeable do |stf| %>
+        <%= render "/admin/sections/#{@section.sectiontypeable.class}/fields", f: stf %>
+      <% end %>
+      
+
+      <div class="form-actions text-right">
+        <%= link_to "Back", @section.sectionable.return_path, class: 'btn btn-outline-secondary' %>
+        <%= f.button :submit, class: 'btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
