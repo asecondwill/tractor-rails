@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <h1>Users</h1>
+  <%= search_form_for [:admin,@q], class: :search do |f| %>
+    <div class="row">
+      <div class="col">
+        <%= f.label :email_cont %>
+        <%= f.search_field :email_cont, class: " form-control"  %>
+      </div>
+      <div class="col">
+        <%= f.label :site_admin_eq %>
+        <%= f.select :site_admin_eq, 
+                      options_for_select([false, true],  @q.site_admin_eq),
+                      {include_blank: true},  
+                      { class: "selecttwo form-control"} %>
+      </div>
+      <div class="col pt-4"><%= f.submit class: 'btn btn-primary'%></div>
+    </div>
+  <% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>       
+        <th>TimeZone</th>
+        <th>Admin</th>
+        <th>Debug</th>               
+        <th>Created</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name.familiar if user.name %></td>
+          <td><%= user.email %></td>         
+          <td><%= user.time_zone %></td>          
+          <td><%= pillify_boolean user.site_admin  %></td>
+           <td><%= pillify_boolean user.debug  %></td>                  
+          <td><%= user.created_at.to_fs(:short) %></td>
+          <td class="actions">
+            <%= link_to 'Show', [:admin, user], class: 'btn btn-light' %>
+            <%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-light' %>
+            <%= link_to "<i class='bi-trash'></i>".html_safe, admin_user_path(user), class: 'btn btn-danger', data: {
+                                  turbo_method: :delete,
+                                  turbo_confirm: "Are you sure?"
+                                } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center">
+      <%== pagy_bootstrap_nav(@pagy, locals: {pagy: @pagy}) %>
+  </div>
+  <br>
+  <br>
+  <%# link_to 'New User', new_admin_user_path, class: "btn btn-success min-width-btn" %>
+</div>

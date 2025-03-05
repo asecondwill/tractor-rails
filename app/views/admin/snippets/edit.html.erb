@@ -1,0 +1,13 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Snippets", admin_snippets_path %></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
+<div class="card">
+  <div class="card-body">
+    <%= render 'form', snippet: @snippet %>
+  </div>
+</div>
+

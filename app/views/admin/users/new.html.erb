@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Add</li>
+  </ol>
+</nav>
+<div class="card">
+  <div class="card-body">
+    <%= render 'form', user: @user %>
+  </div>
+</div>
+
