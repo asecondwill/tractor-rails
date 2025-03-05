@@ -2,6 +2,7 @@
 
 require_relative "tractor/version"
 
+
 module Tractor
   class Error < StandardError; end
 
@@ -21,6 +22,13 @@ module Tractor
 
     initializer "tractor.debug" do |app|
       puts "Asset paths: #{app.config.assets.paths.inspect}"
+    end
+
+    initializer "your_gem_name.load_dependencies" do
+      require "name_of_person"
+      require "ransack"
+      require "commonmarker"
+      require "github-markup"
     end
   end
 end
