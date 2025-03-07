@@ -15,4 +15,14 @@ module AdminHelper
       "<span class='badge rounded-pill text-bg-secondary'>#{no_text}</span>".html_safe
     end
   end
+
+
+  def tractor_importmap_tags(entry_point = "application")
+     puts "Import map JSON: #{Tractor.config.importmap.to_json(resolver: self)}"
+    safe_join [
+      javascript_inline_importmap_tag(Tractor.config.importmap.to_json(resolver: self)),
+      javascript_importmap_module_preload_tags(Tractor.config.importmap),
+      javascript_import_module_tag(entry_point)
+    ], "\n"
+  end
 end

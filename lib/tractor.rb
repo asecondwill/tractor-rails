@@ -1,9 +1,13 @@
 # frozen_string_literal: true
-
+# lib/tractor.rb
 require_relative "tractor/version"
 
 
 module Tractor
+  include ActiveSupport::Configurable
+  config_accessor :importmap
+  self.importmap = Importmap::Map.new
+
   class Error < StandardError; end
 
   class Engine < ::Rails::Engine
@@ -18,6 +22,12 @@ module Tractor
       #   "admin.scss" => "admin.css"
       # }
       puts "Dart Sass builds: #{app.config.dartsass.builds.inspect}"
+    end
+
+    initializer "tractor.assets" do |app|
+      # Add the gem's JavaScript directory to the asset path
+      app.config.assets.paths << root.join("app", "javascript").to_s
+      puts "asset paths #{app.config.assets.paths}"
     end
 
     initializer "tractor.debug" do |app|
