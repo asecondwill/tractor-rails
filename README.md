@@ -4,6 +4,21 @@ A very basic Admin interface
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tractor`. To experiment with that code, run `bin/console` for an interactive prompt.
 
+run 
+````bash 
+rails generate tractor:install 
+````
+check migration
+````bash
+rails db:migrate
+````
+
+add .env items 
+````
+DOMAIN="http://localhost:3000"
+APPLICATION_NAME="app.your-site.com"
+PUBLIC_STORAGE_SERVICE="public"
+````
 ## Installation
 
 gem "tractor"

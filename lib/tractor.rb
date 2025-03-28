@@ -21,24 +21,26 @@ module Tractor
       # app.config.dartsass.builds = {
       #   "admin.scss" => "admin.css"
       # }
-      puts "Dart Sass builds: #{app.config.dartsass.builds.inspect}"
+     # puts "Dart Sass builds: #{app.config.dartsass.builds.inspect}"
     end
 
     initializer "tractor.assets" do |app|
       # Add the gem's JavaScript directory to the asset path
       app.config.assets.paths << root.join("app", "javascript").to_s
-      puts "asset paths #{app.config.assets.paths}"
+     # puts "asset paths #{app.config.assets.paths}"
     end
 
     initializer "tractor.debug" do |app|
-      puts "Asset paths: #{app.config.assets.paths.inspect}"
+      #puts "Asset paths: #{app.config.assets.paths.inspect}"
     end
 
-    initializer "your_gem_name.load_dependencies" do
+    initializer "tractor.load_dependencies" do
       require "name_of_person"
       require "ransack"
       require "commonmarker"
       require "github-markup"
+      require "acts_as_list"
+      require "ancestry"
     end
 
     # Load the routes from the gem

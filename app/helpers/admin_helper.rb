@@ -18,11 +18,25 @@ module AdminHelper
 
 
   def tractor_importmap_tags(entry_point = "application")
-     puts "Import map JSON: #{Tractor.config.importmap.to_json(resolver: self)}"
+    # puts "Import map JSON: #{Tractor.config.importmap.to_json(resolver: self)}"
     safe_join [
       javascript_inline_importmap_tag(Tractor.config.importmap.to_json(resolver: self)),
       javascript_importmap_module_preload_tags(Tractor.config.importmap),
       javascript_import_module_tag(entry_point)
     ], "\n"
+  end
+
+  def nested_items(items)
+    items.map do |item, sub_items|
+      content_tag(:div,
+                  (render(item) + content_tag(
+                    :div,
+                    nested_items(sub_items),
+                    class: "nested",
+                    'data-id': item.id
+                  )).html_safe,
+                  class: "list-group-item ",
+                  'data-id': item.id)
+    end.join.html_safe
   end
 end

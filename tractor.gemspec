@@ -39,6 +39,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "commonmarker", "< 1.0"
   spec.add_dependency "name_of_person"
   spec.add_dependency "ransack"
+  
+
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
