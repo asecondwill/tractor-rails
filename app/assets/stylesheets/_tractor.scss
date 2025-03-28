@@ -12,7 +12,7 @@
 
 
 
-// //////
+
 .bg-offwhite{
   background-color: #fbfbfc;
 }
@@ -92,40 +92,7 @@
   }
 }
 
-.results.menuitem-results{
-  overflow-y: auto;
-  max-height: 300px;
-  ul{
-    padding-left: 0 !important;
-  }
-  
-  li{
-    cursor: pointer;
-    list-style: none ;
-    padding: 4px;
-    
-    border: 1px solid #eee;
-    margin-bottom: 4px;
-    &:hover{
-      background: #f9f9f9;
-    }
 
-    .details{
-      font-size: 0.8em;
-      color: #999;
-      float: right;    
-
-    }
-  }
-}
-
-.menuitem-record{
-  color: #555;
-  margin-bottom: 1em;
-}
-.menitem-name{
-  cursor: grab;
-}
 
 .form-check{
   clear: both;
