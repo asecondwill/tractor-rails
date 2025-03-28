@@ -14,6 +14,7 @@ module Tractor
     # Add the assets paths to the engine
     initializer "tractor.assets.paths" do |app|
       app.config.assets.paths << root.join("app", "assets", "stylesheets")
+      app.config.assets.paths << root.join("app", "javascript").to_s
     end
 
     # Configure Dart Sass builds
@@ -24,11 +25,7 @@ module Tractor
      # puts "Dart Sass builds: #{app.config.dartsass.builds.inspect}"
     end
 
-    initializer "tractor.assets" do |app|
-      # Add the gem's JavaScript directory to the asset path
-      app.config.assets.paths << root.join("app", "javascript").to_s
-     # puts "asset paths #{app.config.assets.paths}"
-    end
+  
 
     initializer "tractor.debug" do |app|
       #puts "Asset paths: #{app.config.assets.paths.inspect}"
