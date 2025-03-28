@@ -40,7 +40,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "name_of_person"
   spec.add_dependency "ransack"
   
-
+  spec.add_dependency "acts_as_list"
+  spec.add_dependency "ancestry"
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"

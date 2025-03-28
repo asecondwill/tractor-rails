@@ -14,22 +14,23 @@ module Tractor
     # Add the assets paths to the engine
     initializer "tractor.assets.paths" do |app|
       app.config.assets.paths << root.join("app", "assets", "stylesheets")
-      app.config.assets.paths << root.join("app", "javascript").to_s
+      # this does nothing right?  its all in the assets dir
+      app.config.assets.paths << root.join("app", "javascript").to_s 
     end
 
     # Configure Dart Sass builds
-    initializer "tractor.assets.configure" do |app|
-      # app.config.dartsass.builds = {
-      #   "admin.scss" => "admin.css"
-      # }
-     # puts "Dart Sass builds: #{app.config.dartsass.builds.inspect}"
-    end
+    # initializer "tractor.assets.configure" do |app|
+    #   # app.config.dartsass.builds = {
+    #   #   "admin.scss" => "admin.css"
+    #   # }
+    #  # puts "Dart Sass builds: #{app.config.dartsass.builds.inspect}"
+    # end
 
   
 
-    initializer "tractor.debug" do |app|
-      #puts "Asset paths: #{app.config.assets.paths.inspect}"
-    end
+    # initializer "tractor.debug" do |app|
+    #   #puts "Asset paths: #{app.config.assets.paths.inspect}"
+    # end
 
     initializer "tractor.load_dependencies" do
       require "name_of_person"
