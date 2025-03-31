@@ -154,3 +154,15 @@ td.actions{
   max-width: 300px;
   overflow-x: scroll;
 }
+
+
+.admin-sidebar-menu{
+  @extend .ms-1, .mt-1, .nav, .nav-pills, .flex-column, .mb-0, .align-items-center, .align-items-sm-start;
+  li{
+    a{
+      span{
+        @extend .ms-2, .fw-600, .d-none, .d-sm-inline;
+      }
+    }
+  }
+}
