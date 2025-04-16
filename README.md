@@ -32,6 +32,33 @@ Rails.application.config.dartsass.builds = {
 }
 ````
 
+Add links to sidebar for content items (pages, menus etc): 
+```` ruby
+Tractor::Engine.config.sidebar_content_items <<  {
+    name: 'Menus',
+    icon: 'bi-menu-app',
+    path: '/admin/menus'
+  }
+ ````
+override _app_specific.html.erb to add admin areas for app specific items
+````ruby
+<ul class="admin-sidebar-menu" >
+  <li class="">
+    <a href="/admin/savers" class="">
+      <i class="bi bi-link-45deg"></i>
+      <span class="">Savers</span>
+    </a>
+  </li> 
+</ul>
+````
+and add it to your routes
+````ruby
+  namespace :admin do
+    resources :savers   
+  end
+````
+
+
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
 Install the gem and add to the application's Gemfile by executing:

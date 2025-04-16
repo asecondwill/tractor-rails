@@ -157,9 +157,11 @@ td.actions{
 
 
 .admin-sidebar-menu{
-  @extend .ms-1, .mt-1, .nav, .nav-pills, .flex-column, .mb-0, .align-items-center, .align-items-sm-start;
+  @extend .ms-1, .mt-1, .nav, .nav-pills, .flex-column, .mb-2, .align-items-center, .align-items-sm-start;
   li{
+    @extend .mb-1;
     a{
+     
       span{
         @extend .ms-2, .fw-600, .d-none, .d-sm-inline;
       }

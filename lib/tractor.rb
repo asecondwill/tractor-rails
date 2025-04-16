@@ -11,6 +11,12 @@ module Tractor
   class Error < StandardError; end
 
   class Engine < ::Rails::Engine
+    config.sidebar_content_items = [{
+      name: 'Snippets',
+      icon: 'bi-ui-checks',
+      path: '/admin/snippets'
+    }]
+     
     # Add the assets paths to the engine
     initializer "tractor.assets.paths" do |app|
       app.config.assets.paths << root.join("app", "assets", "stylesheets")
