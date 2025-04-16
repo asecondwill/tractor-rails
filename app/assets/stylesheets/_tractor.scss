@@ -9,7 +9,7 @@
 
 @import 'bootstrap';
 @import 'admin/file_field';
-
+@import 'admin/mde';
 
 
 
@@ -165,4 +165,9 @@ td.actions{
       }
     }
   }
+}
+
+.hint{
+  font-style: italic;
+  font-weight: 100;
 }
