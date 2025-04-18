@@ -2,8 +2,7 @@
 
 A very basic Admin interface
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tractor`. To experiment with that code, run `bin/console` for an interactive prompt.
-
+# Setup
 run 
 ````bash 
 rails generate tractor:install 
@@ -58,6 +57,10 @@ and add it to your routes
   end
 ````
 
+TODO: move pages and the polymorphic content tools into tractor-content gem
+TODO: move the templating for scafolding generators into this gem (tractor) 
+TODO:  improve template & generators
+TODO: add templating documentation- how do you add a set of controllers, views, model to tractors admin.  
 
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
