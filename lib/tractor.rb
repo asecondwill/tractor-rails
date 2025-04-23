@@ -45,6 +45,9 @@ module Tractor
       require "github-markup"
       require "acts_as_list"
       require "ancestry"
+      require "shortcode"
+      require "marksmith"
+      # require "marksmith/marksmith_helper" # nope
     end
 
     # Load the routes from the gem
@@ -55,6 +58,15 @@ module Tractor
     initializer "tractor.load_static_assets" do |app|
       app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
+
+ 
+    # initializer "tractor.helpers" do
+    #   ActiveSupport.on_load(:action_view) do
+    #     include Marksmith::MarksmithHelper
+    #   end
+    # end - nope
+
+
 
     config.after_initialize do
       Rails.application.routes.prepend do

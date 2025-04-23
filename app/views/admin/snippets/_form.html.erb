@@ -6,7 +6,8 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%# f.input :slug %>
-    <%= f.input :content,  input_html: {class: 'easymde'} %>
+    <%# f.input :content,  input_html: {class: 'easymde'} %>
+    <%= f.marksmith :content %>
     <p class="hint">You can use <a target="_blank" href="https://www.markdownguide.org/basic-syntax/" >markdown</a> here.</p>
   </div>
 

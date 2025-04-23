@@ -2,7 +2,7 @@ module AdminSiteHelper
   def snippet(slug)
     snippet = Snippet.friendly.find_by(slug: slug)   
     if snippet 
-      "<div class='snippet admin-link-wrap'>#{admin_link(snippet)}#{sc(md(snippet.content))}</div>".html_safe
+      "<div class='snippet admin-link-wrap md'>#{admin_link(snippet)}#{sc(md(snippet.content))}</div>".html_safe
     else
       "<div class='snippet-missing'>Snippet #{slug} is missing</div>".html_safe
     end
@@ -18,7 +18,8 @@ module AdminSiteHelper
 
   def md(s)    
     return unless s
-    a = GitHub::Markup.render('README.markdown', s).html_safe
+    #a = GitHub::Markup.render('README.markdown', s).html_safe
+    a = marksmithed(s)
     a.gsub!('{cite}', '<cite>')
     a.gsub!('{/cite}', '</cite>')
     a.gsub!('{br}', '<br>')

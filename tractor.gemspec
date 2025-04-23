@@ -36,12 +36,15 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "dartsass-rails"
   spec.add_dependency 'github-markup'
-  spec.add_dependency "commonmarker", "< 1.0"
+  spec.add_dependency "commonmarker"
   spec.add_dependency "name_of_person"
   spec.add_dependency "ransack"
   
   spec.add_dependency "acts_as_list"
   spec.add_dependency "ancestry"
+  spec.add_dependency "shortcode"
+  spec.add_dependency "marksmith"
+
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"

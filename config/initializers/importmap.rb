@@ -7,7 +7,7 @@ Tractor.config.importmap.draw do
   # Tractor entrypoint
   pin "application", to: "tractor/application.js"
   pin "sortablejs", to: "tractor/libraries/sortable.js"
-  
+  pin "@avo-hq/marksmith", to: "https://ga.jspm.io/npm:@avo-hq/marksmith@0.4.0/dist/marksmith.esm.js"
   pin_all_from Tractor::Engine.root.join("app/assets/javascripts/tractor/controllers"), under: "controllers", to: "tractor/controllers"
   #pin_all_from Tractor::Engine.root.join("app/assets/javascripts/tractor/libraries"), under: "libraries", to: "tractor/libraries"
 end

@@ -39,7 +39,7 @@ class Admin::SnippetsController < AdminController
   def update    
     respond_to do |format|
       if @snippet.update(snippet_params)
-        format.html { redirect_to admin_snippets_path, notice: 'Snippet was successfully updated.' }
+        format.html { redirect_to edit_admin_snippet_path, notice: 'Snippet was successfully updated.' }
         format.json { render :show, status: :ok, location: @snippet }
       else
         format.html { render :edit, status: :unprocessable_entity }

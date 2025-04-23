@@ -5,6 +5,20 @@
 .snippet{
   position: relative;
 }
+.md{
+  img{
+    max-width: 80%;
+    display: block;
+    margin: 1em auto;
+
+  }
+  code{
+    background:#222;
+    padding: 1em;
+    margin: 1em auto;
+    display: block;
+  }
+}
 .site-admin{
   .snippet-missing{
     display: block;
@@ -57,3 +71,4 @@
     }     
   }
 }
+
