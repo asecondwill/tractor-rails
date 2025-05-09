@@ -1,0 +1,35 @@
+<div class="h2">Media Library</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>FileName</th>
+      <th>Created</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @medias.each do |it| %>
+      <tr>
+        <td>          
+           <% if it.file.previewable?  %>
+              <%= image_tag it.file.preview(resize_to_limit: [100, 100]), class: "img-thumbnail" %>
+            <% elsif it.file.filename.extension.in? ['jpg', 'png'] %>
+              <%= image_tag it.file.variant(resize_to_limit: [100, 100]), class: "img-thumbnail" %><br>
+            <% end %>
+        </td>
+        <td><%= it.file.filename %> </td>
+        <td><%= it.created_at %></td>
+        <td class="actions">
+          <%= link_to '<i class="bi bi-pencil"></i>'.html_safe,  edit_admin_media_path(it) , class: 'btn btn-success'  %>
+           <%= link_to "<i class='bi-trash'></i>".html_safe, admin_media_path(it.id), class: 'btn btn-danger', data: {
+                                  turbo_method: :delete,
+                                  turbo_confirm: "Are you sure?"
+                                } %> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to  new_admin_media_path, class: 'btn btn-success' do %> New Media <i class='bi bi-plus-circle-dotted'></i> <% end %>

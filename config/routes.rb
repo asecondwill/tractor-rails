@@ -26,13 +26,15 @@ Rails.application.routes.draw do
         end
       end
     end
-    get "links/menuitems", to: "links#menuitems"
-    resources :menus do
-      resources :menuitems do
-        member do
-          patch :move
-        end
+    
+    resources :medias do
+      collection do
+        get "attach", to: "medias#attach"
       end
     end
+
+    #get "attach-media", to: "media_library#attach"
+    post "/rails/active_storage/direct_uploads", to: "/active_storage/direct_uploads#create"
+    
   end
 end

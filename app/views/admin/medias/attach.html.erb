@@ -1,0 +1,31 @@
+
+<turbo-frame id="tractor-modal-wrap" >
+  
+
+
+  <div class="modal fade" id="tractor-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">              
+            <h3>Choose a File</h3>
+            <div class="d-flex flex-wrap gap-3" data-controller="media">
+              <% @medias.each do |media| %>  
+                    <a href="#" class="flex-item" data-action="click->media#selectItem">
+                      <%= image_tag media.file.variant(resize_to_limit: [100, 100]), class: "img-thumbnail" %>
+                    </a>
+              <% end %>
+            </div>              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+</turbo-frame>

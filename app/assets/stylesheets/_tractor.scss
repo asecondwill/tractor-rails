@@ -173,3 +173,13 @@ td.actions{
   font-style: italic;
   font-weight: 100;
 }
+
+img.img-fullsize{
+  max-width: 100%;
+  width: 100%;
+}
+table.meta{
+  td, th{
+    font-size: 14px;
+  }
+}

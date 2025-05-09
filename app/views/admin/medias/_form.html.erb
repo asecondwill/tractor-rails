@@ -1,0 +1,17 @@
+<%= simple_form_for [:admin, @media], url: @media.new_record? ? admin_medias_path : admin_media_path(@media), html: { multipart: true } do |f| %>
+
+  <div class="form-group">
+    <%= f.input :file, as: :file, label: "Upload File" %>
+  </div>
+ 
+ 
+  <div class="form-group">
+    <%= f.input :alt, label: "Alt Text" %>
+  </div>
+  <div class="form-group text-end">
+    <%= link_to 'Media Index', admin_medias_path %>
+    <%= f.button :submit, "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+

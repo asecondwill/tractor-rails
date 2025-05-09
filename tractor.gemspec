@@ -44,6 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "ancestry"
   spec.add_dependency "shortcode"
   spec.add_dependency "marksmith"
+  spec.add_dependency "bootstrap"
 
 
   # Uncomment to register a new dependency of your gem

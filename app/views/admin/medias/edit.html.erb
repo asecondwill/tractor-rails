@@ -1,0 +1,48 @@
+<h2>Media Library</h2>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Media Library", admin_medias_path %></li>
+    <li class="breadcrumb-item"><%=  @media.file.filename %></li>
+    <li class="breadcrumb-item active" aria-current="media">Edit</li>
+  </ol>
+</nav>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+          <% if @media.file.previewable?  %>
+              <%= image_tag @media.file.preview(resize_to_limit: [100, 100]), class: "img-thumbnail" %>
+            <% elsif @media.file.filename.extension.in? ['jpg', 'png'] %>
+              <%= image_tag @media.file, class: "img-fullsize" %><br>
+            <% end %>
+      </div>
+      <div class="col-md-4">
+        <table class="table meta">
+            <tr>
+             <th>Filename</th>
+             <td><%= @media.file.filename %></td>
+            </tr>
+            <tr>
+             <th>Created</th>
+             <td><%= @media.created_at %></td>
+            </tr>
+            <tr>
+              <th>Size</th>
+             <td><%= number_to_human_size(@media.file.blob.byte_size) %></td>
+            </tr>
+            <tr>
+              <th>File Type</th>
+              <td><%= @media.file.blob.content_type %></td>
+            </tr>
+            <tr>
+              <th>Size</th>
+              <td>
+                <%= @media.file.metadata['width']  %>x<%=@media.file.metadata['height'] %>px
+              </td>
+            </tr>
+        </table>
+        <%= render "form", media: @media %>
+      </div>
+    </div>
+  </div>
+</div>

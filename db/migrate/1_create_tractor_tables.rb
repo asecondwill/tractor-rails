@@ -84,5 +84,14 @@ class CreateTractorTables < ActiveRecord::Migration[4.2]
     end
 
 
+    create_table :media do |t|
+      t.string :name
+      t.string :title
+      t.text :alt
+      
+
+      t.timestamps
+    end
+
   end
 end

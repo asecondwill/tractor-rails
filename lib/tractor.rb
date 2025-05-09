@@ -24,6 +24,8 @@ module Tractor
       app.config.assets.paths << root.join("app", "javascript").to_s 
     end
 
+    
+
     # Configure Dart Sass builds
     # initializer "tractor.assets.configure" do |app|
     #   # app.config.dartsass.builds = {
@@ -58,6 +60,8 @@ module Tractor
     initializer "tractor.load_static_assets" do |app|
       app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
+
+
 
  
     # initializer "tractor.helpers" do
