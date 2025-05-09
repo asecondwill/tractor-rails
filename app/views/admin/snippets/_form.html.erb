@@ -15,12 +15,12 @@
         params: {
           resource_name: 'snippet',
           controller_name: "marksmith",
-          controller_selector: "[data-unique-selector=snippet_#{@snippet.id}]",
-          record_id: @snippet&.to_param,
+          controller_selector: "[data-unique-selector=#{f.object.model_name.singular}_#{f.object.id}_content]",
+          record_id: f.object&.to_param,
         }
       },
       controller_data_attributes: {
-        unique_selector: "snippet_#{@snippet.id}", # it must coincide with the selector above
+        unique_selector: "#{f.object.model_name.singular}_#{@snippet.id}_content", # it must coincide with the selector above
       }
     %>
     <p class="hint">You can use <a target="_blank" href="https://www.markdownguide.org/basic-syntax/" >markdown</a> here.</p>

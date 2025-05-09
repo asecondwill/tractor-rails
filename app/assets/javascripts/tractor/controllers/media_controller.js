@@ -3,14 +3,11 @@ import * as bootstrap from "bootstrap";
 
 
 export default class extends Controller {
-
-
   static values = {  
     controllerSelector: String,
     controllerName: String,
   
   }
-
 
   connect() {
     console.log('media controller!')
@@ -36,7 +33,6 @@ export default class extends Controller {
     // Trigger the insertAttachment action on the other controller
     this.otherController.insertAttachments(attachments, event)
   }
-
 
   extractMetadataFromItem(item){
     // console.log(item);
