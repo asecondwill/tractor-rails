@@ -7,7 +7,8 @@
     <%= f.input :name %>
     <%# f.input :slug %>
     <%# f.input :content,  input_html: {class: 'easymde'} %>
-    <%= f.marksmith :content, gallery: {
+    <%= f.marksmith :content, 
+      gallery: {
         enabled: true,
         open_path: "/admin/medias/attach",
         turbo_frame: 'tractor-modal-wrap',
@@ -17,7 +18,11 @@
           controller_selector: "[data-unique-selector=snippet_#{@snippet.id}]",
           record_id: @snippet&.to_param,
         }
-    } %>
+      },
+      controller_data_attributes: {
+        unique_selector: "snippet_#{@snippet.id}", # it must coincide with the selector above
+      }
+    %>
     <p class="hint">You can use <a target="_blank" href="https://www.markdownguide.org/basic-syntax/" >markdown</a> here.</p>
   </div>
 

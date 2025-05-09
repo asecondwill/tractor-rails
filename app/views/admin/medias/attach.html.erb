@@ -12,9 +12,18 @@
           </div>
           <div class="modal-body">              
             <h3>Choose a File</h3>
-            <div class="d-flex flex-wrap gap-3" data-controller="media">
+            <div class="d-flex flex-wrap gap-3" data-controller="media"
+               data-media-controller-selector-value="<%= @controllerselector %>" 
+               data-media-controller-name-value="<%= @controllername %>"
+               >
               <% @medias.each do |media| %>  
-                    <a href="#" class="flex-item" data-action="click->media#selectItem">
+                    <a href="#" class="flex-item" 
+                      data-media-library-blob="<%= media.file.blob.as_json.to_json %>"
+                      data-media-library-path="<%= rails_blob_path(media.file.blob, only_path: true) %>"
+                      data-media-library-url="<%= url_for(media.file.blob) %>"
+                      data-media-library-filename="<%= media.file.filename %>"
+                      data-action="click->media#selectItem"
+                      >
                       <%= image_tag media.file.variant(resize_to_limit: [100, 100]), class: "img-thumbnail" %>
                     </a>
               <% end %>

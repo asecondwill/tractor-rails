@@ -13,6 +13,8 @@ class Admin::MediasController < AdminController
 
     def attach      
       @medias=Media.all
+      @controllername=params["controller_name"]
+      @controllerselector=params["controller_selector"]
       render :layout => false
      
     end
