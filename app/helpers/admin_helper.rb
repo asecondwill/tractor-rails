@@ -26,5 +26,23 @@ module AdminHelper
     ], "\n"
   end
 
+  def marksmith_options(f, field_name)
+    {
+      gallery: {
+        enabled: true,
+        open_path: "/admin/medias/attach",
+        turbo_frame: 'tractor-modal-wrap',
+        params: {
+          resource_name: f.object.model_name.singular,
+          controller_name: "marksmith",
+          controller_selector: "[data-unique-selector=#{f.object.model_name.singular}_#{f.object.id}_#{field_name}]",
+          record_id: f.object&.to_param,
+        }
+      },
+      controller_data_attributes: {
+        unique_selector: "#{f.object.model_name.singular}_#{f.object.id}_#{field_name}",
+      }
+    }
+  end
   
 end
