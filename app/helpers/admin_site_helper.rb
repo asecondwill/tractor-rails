@@ -1,6 +1,8 @@
 module AdminSiteHelper
   def snippet(slug)
-    snippet = Snippet.friendly.find_by(slug: slug)   
+    snippet = Rails.cache.fetch("snippet/#{slug}", expires_in: 12.hours) do
+      Snippet.friendly.find_by(slug: slug)
+    end
     if snippet 
       "<div class='snippet admin-link-wrap md'>#{admin_link(snippet)}#{sc(md(snippet.content))}</div>".html_safe
     else
@@ -9,8 +11,10 @@ module AdminSiteHelper
   end
 
   def snippet_or_create(slug, content, content_type: 'standard')         
-    snippet_record = Snippet.friendly.find_by(slug: slug)
     
+    snippet_record = Rails.cache.fetch("snippet/#{slug}", expires_in: 12.hours) do
+      Snippet.friendly.find_by(slug: slug)
+    end
     if snippet_record.nil?
       snippet_record = Snippet.create!(
         slug: slug,

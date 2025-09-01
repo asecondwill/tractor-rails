@@ -25,4 +25,9 @@ class Snippet < ApplicationRecord
   validates :slug, presence: true
   validates :content, presence: true
   friendly_id :name, use: :slugged
+  after_update :invalidate_cache
+  private
+  def invalidate_cache
+    Rails.cache.delete("snippet/#{slug}")
+  end  
 end
