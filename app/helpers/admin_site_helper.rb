@@ -1,37 +1,36 @@
 module AdminSiteHelper
-  def snippet(slug)
-    snippet = Rails.cache.fetch("snippet/#{slug}", expires_in: 12.hours) do
-      Snippet.friendly.find_by(slug: slug)
-    end
-    if snippet 
-      "<div class='snippet admin-link-wrap md'>#{admin_link(snippet)}#{sc(md(snippet.content))}</div>".html_safe
-    else
-      "<div class='snippet-missing'>Snippet #{slug} is missing</div>".html_safe
+  def snippet(slug)  
+    Rails.cache.fetch("snippet_html/#{slug}") do 
+      snippet = Snippet.friendly.find_by(slug: slug)
+      if snippet 
+        "<div class='snippet admin-link-wrap md'>#{admin_link(snippet)}#{sc(md(snippet.content))}</div>".html_safe
+      else
+        "<div class='snippet-missing'>Snippet #{slug} is missing</div>".html_safe
+      end
     end
   end
 
   def snippet_or_create(slug, content, content_type: 'standard')         
+    Rails.cache.fetch("snippet_html/#{slug}") do 
+      snippet_record = Snippet.friendly.find_by(slug: slug)
+      if snippet_record.nil?
+        snippet_record = Snippet.create!(
+          slug: slug,
+          name: slug.humanize,
+          content: content,
+          user_id: User.first.id
+        )
+      else
+      # puts "************** found snippet: #{snippet_record.inspect}"
+      end
     
-    snippet_record = Rails.cache.fetch("snippet/#{slug}", expires_in: 12.hours) do
-      Snippet.friendly.find_by(slug: slug)
-    end
-    if snippet_record.nil?
-      snippet_record = Snippet.create!(
-        slug: slug,
-        name: slug.humanize,
-        content: content,
-        user_id: User.first.id
-      )
-    else
-     # puts "************** found snippet: #{snippet_record.inspect}"
-    end
-   
 
-    if content_type == 'standard'
-      "<div class='snippet admin-link-wrap md'>#{admin_link(snippet_record)}#{sc(md(snippet_record.content.html_safe)).html_safe}</div>".html_safe
-    else      
-      "<div class='snippet admin-link-wrap md'>#{admin_link(snippet_record)}#{strip_tags(snippet_record.content)}</div>".html_safe      
-    end
+      if content_type == 'standard'
+        "<div class='snippet admin-link-wrap md'>#{admin_link(snippet_record)}#{sc(md(snippet_record.content.html_safe)).html_safe}</div>".html_safe
+      else      
+        "<div class='snippet admin-link-wrap md'>#{admin_link(snippet_record)}#{strip_tags(snippet_record.content)}</div>".html_safe      
+      end
+    end   
 
   end 
 
