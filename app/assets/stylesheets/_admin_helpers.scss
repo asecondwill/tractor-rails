@@ -19,6 +19,9 @@
     display: block;
   }
 }
+.admin-link{
+  display: none;
+}
 .site-admin{
   .snippet-missing{
     display: block;
@@ -47,7 +50,7 @@
     }   
     .admin-link-wrap{
       position: relative;
-      .admin-link{      
+      .admin-link{            
         font-size: 12px;
         position: absolute;
         top: -6px;
