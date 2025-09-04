@@ -29,6 +29,6 @@ class Snippet < ApplicationRecord
   private
   def invalidate_cache
     Rails.cache.delete("snippet/#{slug}")
-    Rails.cache.delete("snippet_html/#{slug}")
+    #Rails.cache.delete("snippet_html/#{slug}")
   end  
 end
