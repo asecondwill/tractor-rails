@@ -4,6 +4,7 @@ class CreateTractorTables < ActiveRecord::Migration[4.2]
       t.string :name
       t.string :slug
       t.text :content
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
@@ -73,7 +74,7 @@ class CreateTractorTables < ActiveRecord::Migration[4.2]
       t.string :ancestry
       t.integer :ancestry_depth, default: 0
       t.integer :children_count, default: 0
-      t.uuid :menuitemable_id
+      t.integer :menuitemable_id
       t.string :menuitemable_type
       t.string :style
       t.string :strap
