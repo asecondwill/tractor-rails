@@ -7,10 +7,19 @@ module Tractor
   include ActiveSupport::Configurable
   config_accessor :importmap
   self.importmap = Importmap::Map.new
+  require 'friendly_id'
+  require 'simple_form'
+  require 'name_of_person'
+  require 'pagy'
 
   class Error < StandardError; end
 
   class Engine < ::Rails::Engine
+     
+    initializer "tractor.pagy" do
+      # Pagy config will be loaded automatically from config/initializers/
+    end
+  
     config.sidebar_content_items = [{
       name: 'Snippets',
       icon: 'bi-ui-checks',
