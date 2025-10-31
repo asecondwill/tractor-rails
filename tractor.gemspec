@@ -45,6 +45,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "shortcode"
   spec.add_dependency "marksmith"
   spec.add_dependency "bootstrap"
+  spec.add_dependency "friendly_id"
+  spec.add_dependency "simple_form"
+  spec.add_dependency "pagy"
 
 
   # Uncomment to register a new dependency of your gem
