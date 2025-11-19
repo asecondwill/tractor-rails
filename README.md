@@ -98,3 +98,10 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 # todo
 is it site_admin or admin, align with launchpad
+
+
+# debugging pagy
+pagy keeps being a problem: 
+uninitialized constant Pagy::Frontend errors - have you accidently gone from pagy 9 to pagy 43.  well now its all borked isnt it.  
+
+TODO: snippets need user_id
