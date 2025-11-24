@@ -18,12 +18,23 @@ module AdminHelper
 
 
   def tractor_importmap_tags(entry_point = "application")
-    # puts "Import map JSON: #{Tractor.config.importmap.to_json(resolver: self)}"
-    safe_join [
+    # Allow host app to add custom admin JS
+    if File.exist?(Rails.root.join("app/javascript/admin_custom.js"))
+      Tractor.config.importmap.pin "admin_custom", to: "admin_custom.js"
+    end
+    
+    tags = [
       javascript_inline_importmap_tag(Tractor.config.importmap.to_json(resolver: self)),
       javascript_importmap_module_preload_tags(Tractor.config.importmap),
       javascript_import_module_tag(entry_point)
-    ], "\n"
+    ]
+    
+    # Include admin_custom if it exists
+    if File.exist?(Rails.root.join("app/javascript/admin_custom.js"))
+      tags << javascript_import_module_tag("admin_custom")
+    end
+    
+    safe_join tags, "\n"
   end
 
   def marksmith_options(f, field_name)

@@ -4,9 +4,20 @@ require_relative "tractor/version"
 
 
 module Tractor
-  include ActiveSupport::Configurable
-  config_accessor :importmap
-  self.importmap = Importmap::Map.new
+  class Configuration
+    attr_accessor :importmap
+    
+    def initialize
+      @importmap = Importmap::Map.new
+    end
+  end
+  
+  class << self
+    def config
+      @config ||= Configuration.new
+    end
+  end
+  
   require 'friendly_id'
   require 'simple_form'
   require 'name_of_person'
