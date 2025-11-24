@@ -11,10 +11,14 @@ namespace :tractor do
       destination_path = Rails.application.root.join("db/migrate")
       puts "destination_path: #{destination_path}"
       puts "source_path: #{source_path}"
+
+      # Ensure the destination directory exists
+      FileUtils.mkdir_p(destination_path)
+
       # Copy each migration file
       Dir.glob("#{source_path}/*.rb").each do |file|
         filename = File.basename(file)
-        destination_file = destination_path.join(filename)
+        destination_file = destination_path.join(filename).to_s  # Convert to string
 
         if File.exist?(destination_file)
           puts "Migration #{filename} already exists in the parent app. Skipping."
