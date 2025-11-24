@@ -15,8 +15,7 @@ class Admin::UsersController < AdminController
   end
 
   # GET /admin/users/new
-  def new
-    @account = Account.find(params[:account_id])
+  def new    
     @user = @account.users.new
   end
 
@@ -37,8 +36,7 @@ class Admin::UsersController < AdminController
 
   # POST /admin/users or /admin/users.json
   def create
-    @user = User.new(user_params)
-    @user.terms_of_service = true
+    @user = User.new(user_params)    
     respond_to do |format|
       if @user.save
         format.html { redirect_to admin_users_url, notice: "User was successfully created." }
@@ -96,6 +94,10 @@ class Admin::UsersController < AdminController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name,  :email, :site_admin, :staff, :password, :time_zone, :debug)
+      if User.respond_to?(:admin_params)
+        params.require(:user).permit(*User.admin_params)
+      else
+        params.require(:user).permit(:first_name, :last_name, :email, :site_admin, :staff, :password, :time_zone, :debug, :account_id)
+      end
     end
 end
