@@ -1,11 +1,9 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Pages", admin_pages_path %></li>
-    <li class="breadcrumb-item"><%=  link_to  @section.sectionable.title, @section.sectionable.return_path %></li>
-    <li class="breadcrumb-item"><%=  @section.title %></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit</li>
-  </ol>
-</nav>
+<% 
+  add_breadcrumb "Pages", :admin_pages_path 
+  add_breadcrumb @section.sectionable.title, @section.sectionable.return_path
+  add_breadcrumb @section.title, edit_admin_section_path(@section)
+  add_breadcrumb "Edit", :edit_admin_section_path
+%>
 
 
 <%= simple_form_for([:admin,  @section]) do |f| %>

@@ -1,11 +1,10 @@
 <h2>Media Library</h2>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Media Library", admin_medias_path %></li>
-    <li class="breadcrumb-item"><%=  @media.file.filename %></li>
-    <li class="breadcrumb-item active" aria-current="media">Edit</li>
-  </ol>
-</nav>
+<% 
+  add_breadcrumb "Media Library", :admin_medias_path 
+  add_breadcrumb @media.file.filename, :edit_admin_media_path
+  add_breadcrumb "Edit", :edit_admin_media_path
+%>
+
 <div class="card">
   <div class="card-body">
     <div class="row">

@@ -1,9 +1,7 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Snippets", admin_snippets_path %></li>
-    <li class="breadcrumb-item active" aria-current="page">Add</li>
-  </ol>
-</nav>
+<% 
+  add_breadcrumb "Snippets", :admin_snippets_path 
+  add_breadcrumb "Add", :new_admin_snippet_path
+%>
 <div class="card">
   <div class="card-body">
     <%= render 'form', snippet: @snippet %>

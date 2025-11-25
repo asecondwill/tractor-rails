@@ -1,9 +1,9 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
-    <li class="breadcrumb-item active mr-auto" aria-current="page"><%= @user.email %></li>
-  </ol>
-</nav>
+  <% 
+    add_breadcrumb "Users", :admin_users_path 
+    add_breadcrumb "#{@user.email}", :admin_user_path
+  %>
+   
+
 <div class="card">
   <div class="card-header">
     <h5 >

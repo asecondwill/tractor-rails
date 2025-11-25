@@ -1,10 +1,9 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Pages", admin_pages_path %></li>
-    <li class="breadcrumb-item"><%=  @page.title %></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit</li>
-  </ol>
-</nav>
+<% 
+  add_breadcrumb "Pages", :admin_pages_path 
+  add_breadcrumb @page.title, :admin_page_path
+  add_breadcrumb "Edit", :edit_admin_page_path
+%>
+
 <%= render 'form', page: @page %>
 
 <%= render "admin/sections/list", item: @page, description: 'Page Sections' %>

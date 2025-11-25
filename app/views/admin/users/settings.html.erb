@@ -1,9 +1,7 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Users", admin_users_path %></li>
-    <li class="breadcrumb-item active" aria-current="page">Settings</li>
-  </ol>
-</nav>
+<% 
+  add_breadcrumb "Users", :admin_users_path 
+  add_breadcrumb "Settings", :admin_settings_path
+%>
 <div class="card">
   <div class="card-header">
     <h2>Settings</h2>    

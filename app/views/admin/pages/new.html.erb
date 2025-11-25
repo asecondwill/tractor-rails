@@ -1,7 +1,6 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to "Pages", admin_pages_path %></li>
-    <li class="breadcrumb-item active" aria-current="page">Add</li>
-  </ol>
-</nav>
+<% 
+  add_breadcrumb "Pages", :admin_pages_path 
+  add_breadcrumb "Add", :new_admin_page_path
+%>
+
 <%= render 'form', page: @page %>

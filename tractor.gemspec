@@ -48,6 +48,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "friendly_id"
   spec.add_dependency "simple_form"
   spec.add_dependency "pagy", "9.4.0"
+  spec.add_dependency "breadcrumbs_on_rails"
 
 
   # Uncomment to register a new dependency of your gem
