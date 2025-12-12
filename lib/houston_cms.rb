@@ -1,9 +1,9 @@
 # frozen_string_literal: true
-# lib/tractor.rb
-require_relative "tractor/version"
+# lib/houston_cms.rb
+require_relative "houston_cms/version"
 
 
-module Tractor
+module HoustonCms
   class Configuration
     attr_accessor :importmap
     
@@ -27,7 +27,7 @@ module Tractor
 
   class Engine < ::Rails::Engine
      
-    initializer "tractor.pagy" do
+    initializer "houston_cms.pagy" do
       # Pagy config will be loaded automatically from config/initializers/
     end
   
@@ -38,7 +38,7 @@ module Tractor
     }]
      
     # Add the assets paths to the engine
-    initializer "tractor.assets.paths" do |app|
+    initializer "houston_cms.assets.paths" do |app|
       app.config.assets.paths << root.join("app", "assets", "stylesheets")
       # this does nothing right?  its all in the assets dir
       app.config.assets.paths << root.join("app", "javascript").to_s 
@@ -47,7 +47,7 @@ module Tractor
     
 
     # Configure Dart Sass builds
-    # initializer "tractor.assets.configure" do |app|
+    # initializer "houston_cms.assets.configure" do |app|
     #   # app.config.dartsass.builds = {
     #   #   "admin.scss" => "admin.css"
     #   # }
@@ -56,11 +56,11 @@ module Tractor
 
   
 
-    # initializer "tractor.debug" do |app|
+    # initializer "houston_cms.debug" do |app|
     #   #puts "Asset paths: #{app.config.assets.paths.inspect}"
     # end
 
-    initializer "tractor.load_dependencies" do
+    initializer "houston_cms.load_dependencies" do
       require "name_of_person"
       require "ransack"
       require "commonmarker"
@@ -69,22 +69,24 @@ module Tractor
       require "ancestry"
       require "shortcode"
       require "marksmith"
+      require "breadcrumbs_on_rails"
+      require_relative "houston_cms/bootstrap_five_breadcrumbs"
       # require "marksmith/marksmith_helper" # nope
     end
 
     # Load the routes from the gem
-    initializer "tractor.load_app_instance_data" do |app|
-      Tractor::Engine.routes.default_url_options = app.config.action_mailer.default_url_options
+    initializer "houston_cms.load_app_instance_data" do |app|
+      HoustonCms::Engine.routes.default_url_options = app.config.action_mailer.default_url_options
     end
 
-    initializer "tractor.load_static_assets" do |app|
+    initializer "houston_cms.load_static_assets" do |app|
       app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
 
 
 
  
-    # initializer "tractor.helpers" do
+    # initializer "houston_cms.helpers" do
     #   ActiveSupport.on_load(:action_view) do
     #     include Marksmith::MarksmithHelper
     #   end
@@ -94,7 +96,7 @@ module Tractor
 
     config.after_initialize do
       Rails.application.routes.prepend do
-        mount Tractor::Engine, at: "/admin"
+        mount HoustonCms::Engine, at: "/admin"
       end
     end
   end

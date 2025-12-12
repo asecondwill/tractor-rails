@@ -17,15 +17,15 @@ module AdminHelper
   end
 
 
-  def tractor_importmap_tags(entry_point = "application")
+  def houston_cms_importmap_tags(entry_point = "application")
     # Allow host app to add custom admin JS
     if File.exist?(Rails.root.join("app/javascript/admin_custom.js"))
-      Tractor.config.importmap.pin "admin_custom", to: "admin_custom.js"
+      HoustonCms.config.importmap.pin "admin_custom", to: "admin_custom.js"
     end
     
     tags = [
-      javascript_inline_importmap_tag(Tractor.config.importmap.to_json(resolver: self)),
-      javascript_importmap_module_preload_tags(Tractor.config.importmap),
+      javascript_inline_importmap_tag(HoustonCms.config.importmap.to_json(resolver: self)),
+      javascript_importmap_module_preload_tags(HoustonCms.config.importmap),
       javascript_import_module_tag(entry_point)
     ]
     
@@ -42,7 +42,7 @@ module AdminHelper
       gallery: {
         enabled: true,
         open_path: "/admin/medias/attach",
-        turbo_frame: 'tractor-modal-wrap',
+        turbo_frame: 'houston-cms-modal-wrap',
         params: {
           resource_name: f.object.model_name.singular,
           controller_name: "marksmith",

@@ -1,15 +1,15 @@
-Tractor.config.importmap.draw do
+HoustonCms.config.importmap.draw do
   # Stimulus & Turbo
   pin "@hotwired/stimulus", to: "stimulus.js"
   pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
   pin "@hotwired/turbo-rails", to: "turbo.js"
 
-  # Tractor entrypoint
-  pin "application", to: "tractor/application.js"
-  pin "sortablejs", to: "tractor/libraries/sortable.js"
+  # HoustonCms entrypoint
+  pin "application", to: "houston_cms/application.js"
+  pin "sortablejs", to: "houston_cms/libraries/sortable.js"
   pin "@avo-hq/marksmith", to: "https://ga.jspm.io/npm:@avo-hq/marksmith@0.4.0/dist/marksmith.esm.js"
-  pin_all_from Tractor::Engine.root.join("app/assets/javascripts/tractor/controllers"), under: "controllers", to: "tractor/controllers"
-  #pin_all_from Tractor::Engine.root.join("app/assets/javascripts/tractor/libraries"), under: "libraries", to: "tractor/libraries"
+  pin_all_from HoustonCms::Engine.root.join("app/assets/javascripts/houston_cms/controllers"), under: "controllers", to: "houston_cms/controllers"
+  #pin_all_from HoustonCms::Engine.root.join("app/assets/javascripts/houston_cms/libraries"), under: "libraries", to: "houston_cms/libraries"
   
   # pin 'popper', to: 'popper.js'
   
@@ -18,8 +18,8 @@ Tractor.config.importmap.draw do
   
 end
 
-Tractor.config.importmap.cache_sweeper watches: Tractor::Engine.root.join("app/assets/javascripts")
+HoustonCms.config.importmap.cache_sweeper watches: HoustonCms::Engine.root.join("app/assets/javascripts")
 
 ActiveSupport.on_load(:action_controller_base) do
-  before_action { Tractor.config.importmap.cache_sweeper.execute_if_updated }
+  before_action { HoustonCms.config.importmap.cache_sweeper.execute_if_updated }
 end

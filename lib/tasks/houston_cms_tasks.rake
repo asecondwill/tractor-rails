@@ -1,6 +1,6 @@
-namespace :tractor do
+namespace :houston_cms do
   namespace :install do
-    desc "Copy migrations from Tractor to the parent app"
+    desc "Copy migrations from HoustonCms to the parent app"
     task :migrations do
       # Ensure the Rails environment is loaded
       ENV["RAILS_ENV"] ||= "development"

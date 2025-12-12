@@ -1,11 +1,11 @@
-# Tractor
+# HoustonCMS
 
 A very basic Admin interface
 
 # Setup
 run 
 ````bash 
-rails generate tractor:install 
+rails generate houston_cms:install 
 ````
 check migration
 ````bash
@@ -20,8 +20,8 @@ PUBLIC_STORAGE_SERVICE="public"
 ````
 ## Installation
 
-gem "tractor"
-add admin.scss and add `import "tractor";`
+gem "houston_cms"
+add admin.scss and add `import "houston_cms";`
 add admin.css to your dartsass builds:
 ````ruby
 # yourapp/config/initializers/dartsass.rb
@@ -33,7 +33,7 @@ Rails.application.config.dartsass.builds = {
 
 Add links to sidebar for content items (pages, menus etc): 
 ```` ruby
-Tractor::Engine.config.sidebar_content_items <<  {
+HoustonCms::Engine.config.sidebar_content_items <<  {
     name: 'Menus',
     icon: 'bi-menu-app',
     path: '/admin/menus'
@@ -57,10 +57,10 @@ and add it to your routes
   end
 ````
 
-TODO: move pages and the polymorphic content tools into tractor-content gem
-TODO: move the templating for scafolding generators into this gem (tractor) 
+TODO: move pages and the polymorphic content tools into houston_cms-content gem
+TODO: move the templating for scafolding generators into this gem (houston_cms) 
 TODO:  improve template & generators
-TODO: add templating documentation- how do you add a set of controllers, views, model to tractors admin.  
+TODO: add templating documentation- how do you add a set of controllers, views, model to houston_cms admin.  
 
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
@@ -88,7 +88,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tractor.
+Bug reports and pull requests are welcome on GitHub at https://github.com/asecondwill/HoustonCMS.
 
 ## License
 

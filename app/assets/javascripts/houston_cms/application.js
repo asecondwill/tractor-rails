@@ -2,7 +2,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 
-console.log('tractor js');
+console.log('houston_cms js');
 console.log("bootstrap!");
 
 document.addEventListener('turbo:load', loadEditors);

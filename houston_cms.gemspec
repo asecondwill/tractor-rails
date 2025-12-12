@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/tractor/version"
+require_relative "lib/houston_cms/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "tractor"
-  spec.version = Tractor::VERSION
+  spec.name = "houston_cms"
+  spec.version = HoustonCms::VERSION
   spec.authors = ["Will"]
   spec.email = ["will@kindleman.com.au"]
 
@@ -17,8 +17,8 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/asecondwill/tractor-rails."
-  spec.metadata["changelog_uri"] = "https://github.com/asecondwill/tractor-rails"
+  spec.metadata["source_code_uri"] = "https://github.com/asecondwill/HoustonCMS"
+  spec.metadata["changelog_uri"] = "https://github.com/asecondwill/HoustonCMS"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

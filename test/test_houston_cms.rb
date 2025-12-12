@@ -2,9 +2,9 @@
 
 require "test_helper"
 
-class TestTractor < Minitest::Test
+class TestHoustonCms < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::Tractor::VERSION
+    refute_nil ::HoustonCms::VERSION
   end
 
   def test_it_does_something_useful

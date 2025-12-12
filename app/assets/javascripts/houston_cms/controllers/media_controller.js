@@ -26,7 +26,7 @@ export default class extends Controller {
   insertAttachments(attachments, event) {
     // show an error if the controller is not found
     if (!this.otherController) {
-      console.error(`[Tractor->] The Media Library failed to find any field outlets to inject the asset. Tried selector: ${this.controllerSelectorValue} and name: ${this.controllerNameValue}`)
+      console.error(`[HoustonCms->] The Media Library failed to find any field outlets to inject the asset. Tried selector: ${this.controllerSelectorValue} and name: ${this.controllerNameValue}`)
 
       return
     }
@@ -63,7 +63,7 @@ export default class extends Controller {
   hideModal(event){    
     event.preventDefault(); // Prevent the default link behavior
     event.stopPropagation(); // Stop the event from bubbling up to Turbo   
-    const modalElement = document.getElementById("tractor-modal");
+    const modalElement = document.getElementById("houston-cms-modal");
     let modal = bootstrap.Modal.getInstance(modalElement); 
     if (!modal) {      
       modal = new bootstrap.Modal(modalElement); // Initialize the modal if no instance exists

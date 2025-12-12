@@ -10,7 +10,7 @@ export default class extends Controller {
 
   open(event) {
     console.log(" opening modal...");
-    const modalElement = document.getElementById("tractor-modal");
+    const modalElement = document.getElementById("houston-cms-modal");
     const modal = new bootstrap.Modal(modalElement); 
     modal.show();
   }

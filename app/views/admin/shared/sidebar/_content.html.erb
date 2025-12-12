@@ -1,6 +1,6 @@
 
 <ul class="admin-sidebar-menu" > 
-  <% Tractor::Engine.config.sidebar_content_items.each do |item|  %>    
+  <% HoustonCms::Engine.config.sidebar_content_items.each do |item|  %>    
     <li >
       <a href="<%= item[:path] %>" >
         <i class="<%= item[:icon] %>"></i>

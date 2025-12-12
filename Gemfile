@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in tractor.gemspec
+# Specify your gem's dependencies in houston_cms.gemspec
 gemspec
 
 gem "rake", "~> 13.0"
