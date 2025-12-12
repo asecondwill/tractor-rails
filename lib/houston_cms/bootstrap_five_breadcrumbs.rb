@@ -11,12 +11,13 @@ module HoustonCms
     end
 
     def render_element(element)
-      current = @context.current_page?(element.path)
+      path = element.path.is_a?(Symbol) ? @context.send(element.path) : element.path
+      current = @context.current_page?(path)
       @context.content_tag(:li, class: "breadcrumb-item #{'active' if current}", "aria-current": (current ? "page" : nil)) do
         if current
           link_or_text = compute_name(element)
         else
-          link_or_text = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options)
+          link_or_text = @context.link_to_unless_current(compute_name(element), path, element.options)
         end
         link_or_text
       end
