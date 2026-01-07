@@ -21,7 +21,7 @@ PUBLIC_STORAGE_SERVICE="public"
 ## Installation
 
 gem "houston_cms"
-add admin.scss and add `import "houston_cms";`
+add admin.scss and add `@import "houston_cms";`
 add admin.css to your dartsass builds:
 ````ruby
 # yourapp/config/initializers/dartsass.rb
