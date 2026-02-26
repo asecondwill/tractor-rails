@@ -39,7 +39,7 @@ HoustonCms::Engine.config.sidebar_content_items <<  {
     path: '/admin/menus'
   }
  ````
-override _app_specific.html.erb to add admin areas for app specific items
+override app/views/admin/shared/sidebar/_app_specific.html.erb to add admin areas for app specific items
 ````ruby
 <ul class="admin-sidebar-menu" >
   <li class="">
