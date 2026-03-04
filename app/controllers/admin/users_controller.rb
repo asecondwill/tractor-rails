@@ -50,12 +50,6 @@ class Admin::UsersController < AdminController
 
   # PATCH/PUT /admin/users/1 or /admin/users/1.json
   def update
-    user_params = nil
-    if params[:user][:password].blank?
-      user_params = params.require(:user).permit(:first_name, :last_name,  :email, :admin, :staff, :time_zone)
-    else
-      user_params =  params.require(:user).permit(:first_name, :last_name, :email, :admin, :staff, :password, :time_zone)
-    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to admin_users_url, notice: "User was successfully updated." }
@@ -94,10 +88,14 @@ class Admin::UsersController < AdminController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      if User.respond_to?(:admin_params)
-        params.require(:user).permit(*User.admin_params)
+      permitted = if User.respond_to?(:admin_params)
+        User.admin_params
       else
-        params.require(:user).permit(:first_name, :last_name, :email, :site_admin, :staff, :password, :time_zone, :debug, :account_id)
+        [:first_name, :last_name, :email, :site_admin, :staff, :password, :time_zone, :debug, :account_id]
       end
+
+      filtered = params.require(:user).permit(*permitted)
+      filtered.delete(:password) if filtered[:password].blank?
+      filtered
     end
 end
