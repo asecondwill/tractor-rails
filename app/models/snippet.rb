@@ -20,7 +20,7 @@
 #
 class Snippet < ApplicationRecord
   extend FriendlyId
-  belongs_to :user
+  belongs_to :user, optional: true
   validates :name, presence: true
   validates :slug, presence: true
   validates :content, presence: true
